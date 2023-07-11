@@ -51,7 +51,7 @@ if($bn!=NULL)
 <br />
 
 <table border="0" class="table" cellpadding="10" cellspacing="10">
-<tr class="labels" style="text-decoration:underline;"><th>Item Name</th><th>Quantity</th><th>Date</th><th>Status</th></tr>
+<tr class="labels" style="text-decoration:underline;"><th>Item Name</th><th>Quantity</th><th>Date</th><th>Status</th><th>Remark</th></tr>
 <?php
 $x=mysqli_query($set,"SELECT * FROM issue WHERE sid ='$sid'");
 while($y=mysqli_fetch_array($x))
@@ -59,7 +59,7 @@ while($y=mysqli_fetch_array($x))
 	?>
 
 <tr class="labels" style="font-size:14px;"><td><?php echo $y['name'];?></td><td><?php echo $y['quantity'];?></td>
-<td><?php echo $y['date'];?></td><td><?php echo $y['status'];?></td>
+<td><?php echo $y['date'];?></td><td><?php echo $y['status'];?></td><td><?php echo $y['remark'];?></td>
 </tr>
 <?php
 }

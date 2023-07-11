@@ -12,29 +12,35 @@ $name=$b['name'];
 $bn=$_POST['name'];
 $qt=$_POST['quantity'];
 $itemCode = $_POST['code'];
-if($bn!=NULL && $qt!=NULL)
+if($bn != NULL && $qt != NULL && $itemCode != NULL)
 {
-	$sql=mysqli_query($set,"INSERT INTO items(name,quantity,item_code) VALUES('$bn','$qt','$itemCode')");
-	if($sql)
-	{
-		//$msg="Successfully Added";
-		?>
+	$sql = mysqli_query($set, "SELECT * FROM items WHERE item_code = '$itemCode'");
+if (mysqli_num_rows($sql) > 0) {
+    ?>
+        <script>
+            alert('Error! Item Code Already Exists.');
+            window.location = 'manageItems.php';
+        </script>
+    <?php
+} else {
+    $sql = mysqli_query($set, "INSERT INTO items(name,quantity,item_code) VALUES('$bn','$qt','$itemCode')");
+    if ($sql) {
+        ?>
             <script>
-                alert('Sucessfully Added');
+                alert('Successfully Added');
                 window.location = 'manageItems.php';
-                </script>
+            </script>
         <?php
-	}
-	else
-	{
-		//$msg="Item Already Exists";
-		?>
+    } else {
+        ?>
             <script>
-                alert('Error! Item Already Exists.');
+                alert('Error! Failed to Add Item.');
                 window.location = 'manageItems.php';
-                </script>
+            </script>
         <?php
-	}
+    }
+}
+
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

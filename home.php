@@ -16,11 +16,12 @@ $name=$b['name'];
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>SSMS</title>
 <link href="stylesheet.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
 <div id="banner">
-<div align = "center">
+<div align="center">
 <br />
 <span class="head">Stationery Stock Management System</span><br />
 </div>
@@ -38,15 +39,28 @@ $name=$b['name'];
 <br />
 <br />
 <table border="0" class="table" cellpadding="10" cellspacing="10">
-<tr><td><a href="itemRequest.php" class="Command">Request Stationery</a></td>
-<td><a href="request.php" class="Command">Request New Items</a></td>
-<td><a href="requestList.php" class="Command">Request Status</a></td>
-<td><a href="changePassword.php" class="Command">Change Password</a></td>
-<td><a href="logout.php" class="Command">Logout (<?php echo $name;?>)</a></td></tr>
+<tr>
+  <td>
+	<div class="tooltip">
+      <a href="itemRequest.php" class="Command">Request Stationery</a>
+      <span class="tooltiptext">Click here to request available stationery items in the store.</span>
+	  </div>
+  <td>
+    <div class="tooltip">
+      <a href="request.php" class="Command">Issue Unlisted Item</a>
+      <span class="tooltiptext">Click here to request an item that is not listed in the stationery inventory.</span>
+    </div>
+  </td>
+  <td> <div class="tooltip">
+      <a href="requestList.php" class="Command">Request Status</a>
+      <span class="tooltiptext">Click here to view your approval status on your stationery request.</span>
+	  </div>
+  <td><a href="changePassword.php" class="Command">Change Password</a></td>
+  <td><a href="logout.php" class="Command">Logout (<?php echo $name;?>)</a></td>
+</tr>
 </table>
 <br />
 <br />
-
 
 <br />
 <br />

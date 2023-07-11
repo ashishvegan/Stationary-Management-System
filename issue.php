@@ -55,16 +55,28 @@ if($bn!=NULL && $qt!=NULL)
 <br />
 
 <table border="0" class="table" cellpadding="6" cellspacing="6">
-<tr class="labels" style="text-decoration:underline;"><th>Item Code</th><th>Item Name</th><th>Quantity</th><th>Issued By<br>Staff ID</th><th>Date</th><th>Status</th></tr>
+<tr class="labels" style="text-decoration:underline;"><th>Item Code</th><th>Item Name</th><th>Quantity</th><th>Issued By<br>Staff ID</th><th>Date</th><th>Status</th><th>Remark</th></tr>
 <?php
 $x=mysqli_query($set,"SELECT * FROM issue");
 while($y=mysqli_fetch_array($x))
 {
 ?>
 <tr class="labels" style="font-size:14px;"><td><?php echo $y['item_code'];?></td><td><?php echo $y['name'];?></td><td><?php echo $y['quantity'];?></td><td><?php echo $y['sid'];?></td>
-<td><?php echo $y['date'];?></td><td>
+<td><?php echo $y['date'];?></td>
+<td>
 <a href="approve.php?r=<?php echo $y['id']."&a=1&qty=".$y['quantity']."&item=".$y['name'];?>" class="link" style="<?php if($y['status'] == "Approved") { echo "color:green;"; }?>">Approve</a>
 	<a href="approve.php?r=<?php echo $y['id']."&a=2&qty=".$y['quantity']."&item=".$y['name'];?>" class="link" style="<?php if($y['status'] == "Rejected") { echo "color:red;"; }?>">Reject</a>
+</td>
+<td>
+	<form method="post" action="remark.php">
+		<input type="hidden" name="id" value="<?php echo $y['id'];?>"> 
+	<select class="fields" name="remark" onchange="this.form.submit()">
+		<option value="-">---</option>
+		<option value="Ready to Collect">Ready to Collect</option>
+		<option value="Collected">Collected</option>
+	</select>
+	<?php echo $y['remark'];?>
+	</form>
 </td>
 </tr>
 <?php

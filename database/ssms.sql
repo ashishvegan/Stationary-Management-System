@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2023 at 03:32 PM
+-- Generation Time: Jul 11, 2023 at 08:03 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -54,6 +54,7 @@ CREATE TABLE `issue` (
   `quantity` bigint(20) NOT NULL,
   `date` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
+  `remark` varchar(255) NOT NULL,
   `sid` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -61,15 +62,8 @@ CREATE TABLE `issue` (
 -- Dumping data for table `issue`
 --
 
-INSERT INTO `issue` (`id`, `item_code`, `name`, `quantity`, `date`, `status`, `sid`) VALUES
-(3, '', 'Puncher', 5, '06-05-2023', 'Approved', '123456789'),
-(4, '', 'Puncher', 3, '06-05-2023', 'Rejected', '281000'),
-(5, '', 'Notebook', 56, '06-05-2023', 'Rejected', '281000'),
-(6, '', 'Paper', 5, '14-05-2023', 'Approved', '281000'),
-(7, '', 'Booklet', 1, '14-05-2023', 'Rejected', '281000'),
-(11, '', 'Whiteboard Marker (Black)', 25, '14-05-2023', 'Approved', '281000'),
-(12, '', 'Whiteboard Marker (Black)', 99, '07-07-2023', 'Pending', '281001'),
-(13, 'PE123', 'Pencil', 10, '07-07-2023', 'Approved', '281001');
+INSERT INTO `issue` (`id`, `item_code`, `name`, `quantity`, `date`, `status`, `remark`, `sid`) VALUES
+(13, 'PE123', 'Pencil', 10, '07-07-2023', 'Approved', 'Collected', '281001');
 
 -- --------------------------------------------------------
 
